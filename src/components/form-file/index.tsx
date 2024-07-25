@@ -37,6 +37,10 @@ export default function FormFile() {
           method: "POST",
           body: file,
         });
+        if (!res.ok) {
+          console.log(await res.text());
+          return;
+        }
         const newBlob = (await res.json()) as PutBlobResult;
         setBlob(newBlob);
         console.log(newBlob);
