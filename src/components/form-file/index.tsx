@@ -33,12 +33,15 @@ export default function FormFile() {
 
         const file = inputFileRef.current.files[0];
 
-        let res = await fetch(`api/avatar/upload?filename=`.concat(file.name), {
-          method: "POST",
-          body: file,
-        });
+        let res = await fetch(
+          `/api/avatar/upload?filename=`.concat(file.name),
+          {
+            method: "POST",
+            body: file,
+          }
+        );
         if (!res.ok) {
-          console.log(await res.text());
+          console.log(await res.json());
           return;
         }
         const newBlob = (await res.json()) as PutBlobResult;
