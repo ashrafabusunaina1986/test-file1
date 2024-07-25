@@ -33,7 +33,7 @@ export default function FormFile() {
 
         const file = inputFileRef.current.files[0];
 
-        let res = await fetch(`/api/avatar/upload?filename=`.concat(file.name), {
+        let res = await fetch(`api/avatar/upload?filename=`.concat(file.name), {
           method: "POST",
           body: file,
         });
