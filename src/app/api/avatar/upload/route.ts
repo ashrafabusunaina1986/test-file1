@@ -8,6 +8,7 @@ export async function POST(req: Request): Promise<NextResponse> {
   try {
     let blob = await put(filename, req.body as ReadableStream, {
       access: "public",
+      token: process.env.BLOB_READ_WRITE_TOKEN,
     });
 
     return NextResponse.json(blob, { status: 201 });
